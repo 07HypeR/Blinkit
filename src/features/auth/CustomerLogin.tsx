@@ -24,6 +24,7 @@ import CustomButton from '@components/ui/CustomButton';
 import usekeyboardOffsetHeight from '@utils/useKeyboardOffsetHeight';
 import {RFValue} from 'react-native-responsive-fontsize';
 import LinearGradient from 'react-native-linear-gradient';
+import {customerLogin} from '@service/authService';
 
 const bottomColors = [...lightColors].reverse();
 
@@ -55,6 +56,7 @@ const CustomerLogin: FC = () => {
     Keyboard.dismiss();
     setLoading(true);
     try {
+      await customerLogin(phoneNumber);
       resetAndNavigate('ProductDashboard');
     } catch (error) {
       Alert.alert('Login Failed');
