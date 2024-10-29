@@ -10,14 +10,18 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^3.4.0",
     "@react-native/gradle-plugin": "^0.76.0",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
+    "axios": "^1.7.7",
+    "jwt-decode": "^4.0.0",
     "lottie-react-native": "^7.0.0",
     "react": "18.3.1",
     "react-native": "0.76.0",
     "react-native-gesture-handler": "^2.20.2",
     "react-native-linear-gradient": "^2.8.3",
+    "react-native-mmkv": "^3.1.0",
     "react-native-pager-view": "^6.4.1",
     "react-native-reanimated": "^3.16.1",
     "react-native-responsive-fontsize": "^0.5.1",
@@ -25,7 +29,8 @@
     "react-native-screens": "^3.35.0",
     "react-native-svg": "^15.8.0",
     "react-native-svg-transformer": "^1.5.0",
-    "react-native-vector-icons": "^10.2.0"
+    "react-native-vector-icons": "^10.2.0",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
