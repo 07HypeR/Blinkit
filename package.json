@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@homielab/react-native-auto-scroll": "^0.0.10",
     "@react-native-community/geolocation": "^3.4.0",
     "@react-native/gradle-plugin": "^0.76.0",
     "@react-navigation/native": "^6.1.18",
