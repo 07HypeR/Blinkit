@@ -7,6 +7,8 @@ import GeoLocation from '@react-native-community/geolocation';
 import {useAuthStore} from '@state/authStore';
 import {tokenStorage} from '@state/storage';
 import {resetAndNavigate} from '@utils/NavigationUtils';
+import {jwtDecode} from 'jwt-decode';
+import {refetchUser, refresh_tokens} from '@service/authService';
 
 GeoLocation.setRNConfiguration({
   skipPermissionRequests: false,
@@ -14,6 +16,10 @@ GeoLocation.setRNConfiguration({
   enableBackgroundLocationUpdates: true,
   locationProvider: 'auto',
 });
+
+interface DecodedToken {
+  exp: number;
+}
 
 const SplashScreen: FC = () => {
   const {user, setUser} = useAuthStore();
@@ -23,6 +29,35 @@ const SplashScreen: FC = () => {
     const refreshToken = tokenStorage.getString('refreshToken') as string;
 
     if (accessToken) {
+      const decodedAccessToken = jwtDecode<DecodedToken>(accessToken);
+      const decodedRefreshToken = jwtDecode<DecodedToken>(refreshToken);
+
+      const currentTime = Date.now() / 1000;
+
+      if (decodedRefreshToken?.exp < currentTime) {
+        resetAndNavigate('CustomerLogin');
+        Alert.alert('Session Expired', 'Please login again');
+        return false;
+      }
+
+      if (decodedAccessToken?.exp < currentTime) {
+        try {
+          refresh_tokens();
+          await refetchUser(setUser);
+        } catch (error) {
+          console.log(error);
+          Alert.alert('There was an error refreshing token!');
+          return false;
+        }
+      }
+
+      if (user?.role === 'Customer') {
+        resetAndNavigate('ProductDashboard');
+      } else {
+        resetAndNavigate('DeliveryDashboard');
+      }
+
+      return true;
     }
     resetAndNavigate('CustomerLogin');
     return false;
