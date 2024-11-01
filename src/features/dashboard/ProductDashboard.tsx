@@ -1,7 +1,8 @@
-import {View, Text, Animated as RNAnimated} from 'react-native';
+import {View, Text, Animated as RNAnimated, SafeAreaView} from 'react-native';
 import React, {useEffect, useRef} from 'react';
 import NoticeAnimation from './NoticeAnimation';
 import {NoticeHeight} from '@utils/Scailing';
+import Visuals from './Visuals';
 
 const NOTICE_HEIGHT = -(NoticeHeight + 12);
 
@@ -34,7 +35,9 @@ const ProductDashboard = () => {
   return (
     <NoticeAnimation noticePosition={noticePosition}>
       <>
-        <View>
+        <Visuals />
+        <SafeAreaView />
+        <View style={{flex: 1}}>
           <Text>ProductDashboard</Text>
         </View>
       </>
