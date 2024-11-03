@@ -15,6 +15,7 @@ import {
   withCollapsibleContext,
 } from '@r0b0t3d/react-native-collapsible';
 import AnimatedHeader from './AnimatedHeader';
+import StickySearchBar from './StickySearchBar';
 
 const NOTICE_HEIGHT = -(NoticeHeight + 12);
 
@@ -60,6 +61,7 @@ const ProductDashboard = () => {
                 return () => clearTimeout(timeoutId);
               }}
             />
+            <StickySearchBar />
           </CollapsibleHeaderContainer>
         </CollapsibleContainer>
       </>
