@@ -27,6 +27,7 @@
     "react-native-mmkv": "^3.1.0",
     "react-native-pager-view": "^6.4.1",
     "react-native-reanimated": "^3.16.1",
+    "react-native-reanimated-carousel": "^3.5.1",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-rolling-bar": "^1.0.0",
     "react-native-safe-area-context": "^4.12.0",
