@@ -12,6 +12,7 @@ import Visuals from './Visuals';
 import {
   CollapsibleContainer,
   CollapsibleHeaderContainer,
+  CollapsibleScrollView,
   withCollapsibleContext,
 } from '@r0b0t3d/react-native-collapsible';
 import AnimatedHeader from './AnimatedHeader';
@@ -63,6 +64,11 @@ const ProductDashboard = () => {
             />
             <StickySearchBar />
           </CollapsibleHeaderContainer>
+
+          <CollapsibleScrollView
+            nestedScrollEnabled
+            style={styles.panelContainer}
+            showsVerticalScrollIndicator={false}></CollapsibleScrollView>
         </CollapsibleContainer>
       </>
     </NoticeAnimation>
