@@ -6,7 +6,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import ScalePress from '@components/ui/ScalePress';
 
 const AdCarousal: FC<{adData: any}> = ({adData}) => {
-  const progressValue = useSharedValue(0);
+  // const progressValue = useSharedValue(0);
   const baseOptions = {
     vertical: false,
     width: screenWidth,
@@ -14,7 +14,7 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
   };
   return (
     <View style={{left: -20, marginVertical: 20}}>
-      <Carousel
+      {/* <Carousel
         {...baseOptions}
         loop
         pagingEnabled
@@ -34,7 +34,7 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
             </ScalePress>
           );
         }}
-      />
+      /> */}
     </View>
   );
 };
