@@ -6,7 +6,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import ScalePress from '@components/ui/ScalePress';
 
 const AdCarousal: FC<{adData: any}> = ({adData}) => {
-  // const progressValue = useSharedValue(0);
+  const progressValue = useSharedValue(0);
   const baseOptions = {
     vertical: false,
     width: screenWidth,
@@ -14,12 +14,12 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
   };
   return (
     <View style={{left: -20, marginVertical: 20}}>
-      {/* <Carousel
+      <Carousel
         {...baseOptions}
-        loop
-        pagingEnabled
-        snapEnabled
-        autoPlay
+        loop={true}
+        pagingEnabled={true}
+        snapEnabled={true}
+        autoPlay={true}
         autoPlayInterval={3000}
         mode="parallax"
         data={adData}
@@ -34,7 +34,7 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
             </ScalePress>
           );
         }}
-      /> */}
+      />
     </View>
   );
 };
