@@ -1,9 +1,9 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {FC} from 'react';
 import AdCarousal from './AdCarousal';
 import {adData} from '@utils/dummyData';
 
-const Content = () => {
+const Content: FC = () => {
   return (
     <View style={styles.container}>
       <AdCarousal adData={adData} />
