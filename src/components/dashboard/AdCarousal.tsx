@@ -7,18 +7,20 @@ import ScalePress from '@components/ui/ScalePress';
 
 const AdCarousal: FC<{adData: any}> = ({adData}) => {
   const progressValue = useSharedValue(0);
+
   const baseOptions = {
     vertical: false,
     width: screenWidth,
     height: screenWidth * 0.5,
   };
+
   return (
     <View style={{left: -20, marginVertical: 20}}>
-      <Carousel
+      {/* <Carousel
         {...baseOptions}
-        loop={true}
-        pagingEnabled={true}
-        snapEnabled={true}
+        loop
+        pagingEnabled
+        snapEnabled
         autoPlay={true}
         autoPlayInterval={3000}
         mode="parallax"
@@ -34,7 +36,7 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
             </ScalePress>
           );
         }}
-      />
+      /> */}
     </View>
   );
 };
