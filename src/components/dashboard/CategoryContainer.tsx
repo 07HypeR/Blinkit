@@ -12,7 +12,7 @@ const CategoryContainer: FC<{data: any}> = ({data}) => {
         {items.map((item, index) => {
           return (
             <ScalePress
-              onPress={() => navigate('ProductCateogories')}
+              onPress={() => navigate('ProductCategories')}
               key={index}
               style={styles.item}>
               <View style={styles.imageContainer}>
