@@ -16,7 +16,7 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
 
   return (
     <View style={{left: -20, marginVertical: 20}}>
-      {/* <Carousel
+      <Carousel
         {...baseOptions}
         loop
         pagingEnabled
@@ -36,7 +36,7 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
             </ScalePress>
           );
         }}
-      /> */}
+      />
     </View>
   );
 };
