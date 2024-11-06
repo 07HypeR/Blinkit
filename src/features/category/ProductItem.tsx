@@ -25,16 +25,23 @@ const ProductItem: FC<{item: any; index: number}> = ({index, item}) => {
           </CustomText>
         </View>
         <CustomText
-          fontFamily={Fonts.Medium}
+          fontFamily={Fonts.SemiBold}
           variant="h8"
           numberOfLines={2}
           style={{marginVertical: 4}}>
           {item.name}
         </CustomText>
+        <CustomText
+          fontFamily={Fonts.Medium}
+          variant="h8"
+          numberOfLines={2}
+          style={{marginTop: -4}}>
+          {item.quantity}
+        </CustomText>
 
         <View style={styles.priceContainer}>
           <View>
-            <CustomText variant="h8" fontFamily={Fonts.Medium}>
+            <CustomText variant="h8" fontFamily={Fonts.SemiBold}>
               ₹{item?.price}
             </CustomText>
             <CustomText
