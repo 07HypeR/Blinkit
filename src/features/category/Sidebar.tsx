@@ -79,7 +79,7 @@ const Sidebar: FC<SidebarProps> = ({
                 <View
                   style={[
                     styles.imageContainer,
-                    selectedCategory?.id === category?._id &&
+                    selectedCategory?._id === category?._id &&
                       styles.selectedImageContainer,
                   ]}>
                   <Animated.Image

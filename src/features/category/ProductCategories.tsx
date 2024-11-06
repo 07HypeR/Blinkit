@@ -1,9 +1,13 @@
-import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import React, {FC, useEffect, useState} from 'react';
 import CustomHeader from '@components/ui/CustomHeader';
 import {Colors} from '@utils/Constants';
 import Sidebar from './Sidebar';
-import {getAllCategories} from '@service/productService';
+import {
+  getAllCategories,
+  getProductsByCategoryId,
+} from '@service/productService';
+import ProductList from './ProductList';
 
 const ProductCategories: FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -30,6 +34,23 @@ const ProductCategories: FC = () => {
     fetchCategories();
   }, []);
 
+  const fetchProducts = async (categoryId: string) => {
+    try {
+      setProductsLoading(true);
+      const data = await getProductsByCategoryId(categoryId);
+      setProducts(data);
+    } catch (error) {
+      console.log('Error Fetching Products', error);
+    } finally {
+      setProductsLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (selectedCategory?._id) {
+      fetchProducts(selectedCategory?._id);
+    }
+  }, [selectedCategory]);
+
   return (
     <View style={styles.mainContainer}>
       <CustomHeader title={selectedCategory?.name || 'Categories'} search />
@@ -42,6 +63,15 @@ const ProductCategories: FC = () => {
             selectedCategory={selectedCategory}
             onCategoryPress={(category: any) => setSelectedCategory(category)}
           />
+        )}
+        {productsLoading ? (
+          <ActivityIndicator
+            size="large"
+            color={Colors.border}
+            style={styles.center}
+          />
+        ) : (
+          <ProductList data={products || []} />
         )}
       </View>
     </View>
