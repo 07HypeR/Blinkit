@@ -8,6 +8,7 @@
       "@assets/*": ["assets/*"],
       "@features/*": ["features/*"],
       "@service/*": ["service/*"],
+      "@styles/*": ["styles/*"],
       "@navigation/*": ["navigation/*"],
       "@components/*": ["components/*"],
       "@state/*": ["state/*"],

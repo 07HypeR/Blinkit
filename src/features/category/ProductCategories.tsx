@@ -8,6 +8,7 @@ import {
   getProductsByCategoryId,
 } from '@service/productService';
 import ProductList from './ProductList';
+import withCart from '@features/cart/WithCart';
 
 const ProductCategories: FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -95,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductCategories;
+export default withCart(ProductCategories);
