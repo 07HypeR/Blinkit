@@ -7,7 +7,7 @@ import {
   Platform,
   TouchableOpacity,
 } from 'react-native';
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import CustomHeader from '@components/ui/CustomHeader';
 import {Colors, Fonts} from '@utils/Constants';
 import OrderList from './OrderList';
@@ -18,11 +18,13 @@ import {useCartStore} from '@state/cartStore';
 import BillDetails from './BillDetails';
 import {hocStyles} from '@styles/GlobalStyles';
 import {useAuthStore} from '@state/authStore';
+import ArrowButton from '@components/ui/ArrowButton';
 
 const ProductOrder: FC = () => {
   const {getTotalPrice, cart, clearCart} = useCartStore();
   const {user, setCurrentOrder, currentOrder} = useAuthStore();
   const totalItemPrice = getTotalPrice();
+  const [loading, setLoading] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -103,6 +105,15 @@ const ProductOrder: FC = () => {
                 style={{marginTop: 2}}>
                 Cash on Delivery
               </CustomText>
+            </View>
+
+            <View style={{width: '70%'}}>
+              <ArrowButton
+                loading={loading}
+                price={totalItemPrice}
+                title="Place Order"
+                onPress={() => {}}
+              />
             </View>
           </View>
         </View>
