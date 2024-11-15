@@ -6,6 +6,7 @@ import {
   Image,
   Platform,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import React, {FC, useState} from 'react';
 import CustomHeader from '@components/ui/CustomHeader';
@@ -19,12 +20,43 @@ import BillDetails from './BillDetails';
 import {hocStyles} from '@styles/GlobalStyles';
 import {useAuthStore} from '@state/authStore';
 import ArrowButton from '@components/ui/ArrowButton';
+import {navigate} from '@utils/NavigationUtils';
+import {createOrder} from '@service/orderService';
 
 const ProductOrder: FC = () => {
   const {getTotalPrice, cart, clearCart} = useCartStore();
   const {user, setCurrentOrder, currentOrder} = useAuthStore();
   const totalItemPrice = getTotalPrice();
   const [loading, setLoading] = useState(false);
+
+  const handlePlaceOrder = async () => {
+    if (currentOrder !== null) {
+      Alert.alert('Let you first order to be delivered');
+      return;
+    }
+
+    const formattedData = cart.map(item => ({
+      id: item._id,
+      item: item._id,
+      count: item.count,
+    }));
+    if (formattedData.length == 0) {
+      Alert.alert('Add any items to place order');
+      return;
+    }
+    setLoading(true);
+    const data = await createOrder(formattedData, totalItemPrice);
+
+    if (data != null) {
+      setCurrentOrder(data);
+      clearCart();
+      navigate('OrderSuccess', {...data});
+    } else {
+      Alert.alert('There was an error');
+    }
+
+    setLoading(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -112,7 +144,9 @@ const ProductOrder: FC = () => {
                 loading={loading}
                 price={totalItemPrice}
                 title="Place Order"
-                onPress={() => {}}
+                onPress={async () => {
+                  await handlePlaceOrder();
+                }}
               />
             </View>
           </View>
