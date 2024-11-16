@@ -10,6 +10,7 @@ import {RFValue} from 'react-native-responsive-fontsize';
 import CustomText from '@components/ui/CustomText';
 import DeliveryDetails from './DeliveryDetails';
 import OrderSummary from './OrderSummary';
+import withLiveStatus from './withLiveStatus';
 
 const LiveTracking: FC = () => {
   const {currentOrder, setCurrentOrder} = useAuthStore();
@@ -143,4 +144,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LiveTracking;
+export default withLiveStatus(LiveTracking);
