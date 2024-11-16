@@ -1,12 +1,14 @@
 import CustomText from '@components/ui/CustomText';
 import {useNavigationState} from '@react-navigation/native';
+import {SOCKET_URL} from '@service/config';
 import {getOrderById} from '@service/orderService';
 import {useAuthStore} from '@state/authStore';
 import {hocStyles} from '@styles/GlobalStyles';
 import {Colors, Fonts} from '@utils/Constants';
 import {navigate} from '@utils/NavigationUtils';
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import io from 'socket.io-client';
 
 const withLiveStatus = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
@@ -20,6 +22,29 @@ const withLiveStatus = <P extends object>(
       const data = await getOrderById(currentOrder?._id as any);
       setCurrentOrder(data);
     };
+
+    useEffect(() => {
+      if (currentOrder) {
+        const socketInstance = io(SOCKET_URL, {
+          transports: ['websocket'],
+          withCredentials: false,
+        });
+        socketInstance.emit('joinRoom', currentOrder?._id);
+        socketInstance.on('liveTrackingUpdates', updatedOrder => {
+          fetchOrderDetails();
+          console.log('RECEIVING LIVE UPDATES🔴');
+        });
+        socketInstance.on('orderConfirmed', updatedOrder => {
+          fetchOrderDetails();
+          console.log('ORDER CONFIRMATION LIVE UPDATES🔴');
+        });
+
+        return () => {
+          socketInstance.disconnect();
+        };
+      }
+    }, [currentOrder]);
+
     return (
       <View style={styles.container}>
         <WrappedComponent {...props} />
