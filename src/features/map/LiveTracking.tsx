@@ -80,6 +80,26 @@ const LiveTracking: FC = () => {
         <DeliveryDetails details={currentOrder?.customer} />
         <OrderSummary order={currentOrder} />
 
+        <View style={styles.flexRow}>
+          <View style={styles.iconContainer}>
+            <Icon
+              name="cards-heart-outline"
+              color={Colors.disabled}
+              size={RFValue(20)}
+            />
+          </View>
+
+          <View style={{width: '82%'}}>
+            <CustomText variant="h7" fontFamily={Fonts.SemiBold}>
+              Do you like our app clone?
+            </CustomText>
+            <CustomText variant="h9" fontFamily={Fonts.Medium}>
+              Hit star button on github repo! If you are enjoying comment your
+              excietment
+            </CustomText>
+          </View>
+        </View>
+
         <CustomText
           fontFamily={Fonts.SemiBold}
           variant="h6"
