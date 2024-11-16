@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     marginHorizontal: 10,
     width: screenWidth * 0.26,
-    height: screenHeight * 0.15,
+    height: screenHeight * 0.13,
     backgroundColor: '#e9f7f8',
     justifyContent: 'center',
     borderRadius: 25,
