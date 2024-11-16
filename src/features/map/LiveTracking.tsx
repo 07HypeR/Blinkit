@@ -79,6 +79,13 @@ const LiveTracking: FC = () => {
 
         <DeliveryDetails details={currentOrder?.customer} />
         <OrderSummary order={currentOrder} />
+
+        <CustomText
+          fontFamily={Fonts.SemiBold}
+          variant="h6"
+          style={{opacity: 0.6, marginTop: 20}}>
+          Abhik Baidya x Blinkit
+        </CustomText>
       </ScrollView>
     </View>
   );
