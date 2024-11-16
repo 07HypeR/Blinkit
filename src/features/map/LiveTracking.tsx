@@ -19,7 +19,7 @@ const LiveTracking: FC = () => {
   };
 
   useEffect(() => {
-    fetchOrderDetails;
+    fetchOrderDetails();
   }, []);
 
   let msg = 'Packing your order';
@@ -76,7 +76,7 @@ const LiveTracking: FC = () => {
           </View>
         </View>
 
-        <DeliveryDetails details={currentOrder?.cutomer} />
+        <DeliveryDetails details={currentOrder?.customer} />
       </ScrollView>
     </View>
   );
