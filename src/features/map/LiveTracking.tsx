@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {RFValue} from 'react-native-responsive-fontsize';
 import CustomText from '@components/ui/CustomText';
 import DeliveryDetails from './DeliveryDetails';
+import OrderSummary from './OrderSummary';
 
 const LiveTracking: FC = () => {
   const {currentOrder, setCurrentOrder} = useAuthStore();
@@ -77,6 +78,7 @@ const LiveTracking: FC = () => {
         </View>
 
         <DeliveryDetails details={currentOrder?.customer} />
+        <OrderSummary order={currentOrder} />
       </ScrollView>
     </View>
   );
