@@ -12,6 +12,7 @@ import ProductCategories from '@features/category/ProductCategories';
 import ProductOrder from '@features/order/ProductOrder';
 import OrderSuccess from '@features/order/OrderSuccess';
 import LiveTracking from '@features/map/LiveTracking';
+import Profile from '@features/profile/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ const Navigation: FC = () => {
         <Stack.Screen name="ProductOrder" component={ProductOrder} />
         <Stack.Screen name="OrderSuccess" component={OrderSuccess} />
         <Stack.Screen name="LiveTracking" component={LiveTracking} />
+        <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen
           options={{
             animation: 'fade',
