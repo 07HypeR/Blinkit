@@ -6,7 +6,7 @@ import WalletItem from './WalletItem';
 const WalletSection = () => {
   return (
     <View style={styles.walletContainer}>
-      <WalletItem icon="wallet-outline" lable="wallet" />
+      <WalletItem icon="wallet-outline" lable="Wallet" />
       <WalletItem icon="chatbubble-ellipses-outline" lable="Support" />
       <WalletItem icon="card-outline" lable="Payments" />
     </View>

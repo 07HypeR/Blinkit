@@ -18,9 +18,9 @@ const AdCarousal: FC<{adData: any}> = ({adData}) => {
     <View style={{left: -20, marginVertical: 20}}>
       <Carousel
         {...baseOptions}
-        loop
-        pagingEnabled
-        snapEnabled
+        loop={true}
+        pagingEnabled={true}
+        snapEnabled={true}
         autoPlay={true}
         autoPlayInterval={3000}
         mode="parallax"

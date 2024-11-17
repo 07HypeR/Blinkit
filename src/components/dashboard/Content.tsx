@@ -9,7 +9,7 @@ import CategoryContainer from './CategoryContainer';
 const Content: FC = () => {
   return (
     <View style={styles.container}>
-      {/* <AdCarousal adData={adData} /> */}
+      <AdCarousal adData={adData} />
       <CustomText variant="h5" fontFamily={Fonts.SemiBold}>
         Grocery & Kitchen
       </CustomText>
