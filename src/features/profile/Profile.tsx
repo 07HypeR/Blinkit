@@ -6,6 +6,11 @@ import {fetchCustomerOrders} from '@service/orderService';
 import CustomHeader from '@components/ui/CustomHeader';
 import CustomText from '@components/ui/CustomText';
 import {Fonts} from '@utils/Constants';
+import WalletSection from './WalletSection';
+import ActionButton from './ActionButton';
+import OrderItem from './OrderItem';
+import {storage, tokenStorage} from '@state/storage';
+import {resetAndNavigate} from '@utils/NavigationUtils';
 
 const Profile: FC = () => {
   const [orders, setOrders] = useState([]);
@@ -31,11 +36,35 @@ const Profile: FC = () => {
           {user?.phone}
         </CustomText>
 
+        <WalletSection />
+
         <CustomText variant="h8" style={styles.informativeText}>
           YOUR INFORMATION
         </CustomText>
+
+        <ActionButton icon="book-outline" lable="Address book" />
+        <ActionButton icon="information-circle-outline" lable="About us" />
+        <ActionButton
+          icon="log-out-outline"
+          lable="Logout"
+          onPress={() => {
+            clearCart();
+            logout();
+            tokenStorage.clearAll();
+            storage.clearAll();
+            resetAndNavigate('CustomerLogin');
+          }}
+        />
+
+        <CustomText variant="h8" style={styles.pastText}>
+          PAST ORDERS
+        </CustomText>
       </View>
     );
+  };
+
+  const renderOrders = ({item, index}: any) => {
+    return <OrderItem item={item} index={index} />;
   };
 
   return (
@@ -46,7 +75,7 @@ const Profile: FC = () => {
         data={orders}
         ListHeaderComponent={renderHeader}
         renderItem={renderOrders}
-        keyExtractor={(item: any) => item?.order.Id}
+        keyExtractor={(item: any) => item?.orderId}
         contentContainerStyle={styles.scrollViewContent}
       />
     </View>
