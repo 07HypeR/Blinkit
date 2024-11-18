@@ -1,17 +1,23 @@
 import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Colors} from '@utils/Constants';
 import DeliveryHeader from '@components/delivery/DeliveryHeader';
 import {useAuthStore} from '@state/authStore';
+import TabBar from '@components/delivery/TabBar';
 
 const DeliveryDashboard = () => {
   const {user} = useAuthStore();
+  const [selectedTab, setSelectedTab] = useState<'available' | 'delivered'>(
+    'available',
+  );
   return (
     <View style={styles.container}>
       <SafeAreaView>
         <DeliveryHeader name={user?.name} email={user?.email} />
       </SafeAreaView>
-      <View style={styles.subContainer}></View>
+      <View style={styles.subContainer}>
+        <TabBar selectedTab={selectedTab} onTabChange={setSelectedTab} />
+      </View>
     </View>
   );
 };
