@@ -14,6 +14,7 @@ export const createOrder = async (items: any, totalPrice: number) => {
     return null;
   }
 };
+
 export const getOrderById = async (id: string) => {
   try {
     const response = await appAxios.get(`/order/${id}`);
@@ -24,6 +25,7 @@ export const getOrderById = async (id: string) => {
     return null;
   }
 };
+
 export const fetchCustomerOrders = async (userId: string) => {
   try {
     const response = await appAxios.get(`/order?customerId${userId}`);
@@ -31,6 +33,25 @@ export const fetchCustomerOrders = async (userId: string) => {
     return response.data;
   } catch (error) {
     console.log('Fetch Customer Order Error', error);
+    return null;
+  }
+};
+
+export const fetchOrders = async (
+  status: string,
+  userId: string,
+  branchId: string,
+) => {
+  let uri =
+    status == 'available'
+      ? `/order?status=${status}&branchId=${branchId}`
+      : `/order?branchId=${branchId}&deliveryPartnerId=${userId}&status=delivered`;
+
+  try {
+    const response = await appAxios.get(uri);
+    return response.data;
+  } catch (error) {
+    console.log('Fetch Delivery Order Error', error);
     return null;
   }
 };
