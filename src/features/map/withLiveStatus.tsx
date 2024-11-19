@@ -34,7 +34,7 @@ const withLiveStatus = <P extends object>(
           fetchOrderDetails();
           console.log('RECEIVING LIVE UPDATES🔴');
         });
-        socketInstance.on('orderConfirmed', updatedOrder => {
+        socketInstance.on('orderConfirmed', confirmOrder => {
           fetchOrderDetails();
           console.log('ORDER CONFIRMATION LIVE UPDATES🔴');
         });

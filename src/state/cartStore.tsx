@@ -13,7 +13,7 @@ interface CartStore {
   addItem: (item: any) => void;
   removeItem: (id: string | number) => void;
   clearCart: () => void;
-  getItemCount: (id: string | number) => number;
+  getItemCount: (id: string | number) => void;
   getTotalPrice: () => number;
 }
 

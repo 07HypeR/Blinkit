@@ -7,11 +7,12 @@ import CustomText from '@components/ui/CustomText';
 import BillDetails from '@features/order/BillDetails';
 
 const OrderSummary: FC<{order: any}> = ({order}) => {
-  const totalPrice = order?.items?.reduce(
-    (total: number, cartItem: any) =>
-      total + cartItem.item.price * cartItem.count,
-    0,
-  );
+  const totalPrice =
+    order?.items?.reduce(
+      (total: number, cartItem: any) =>
+        total + cartItem.item.price * cartItem.count,
+      0,
+    ) || 0;
 
   return (
     <View style={styles.container}>

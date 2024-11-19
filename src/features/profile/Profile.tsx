@@ -42,11 +42,11 @@ const Profile: FC = () => {
           YOUR INFORMATION
         </CustomText>
 
-        <ActionButton icon="book-outline" lable="Address book" />
-        <ActionButton icon="information-circle-outline" lable="About us" />
+        <ActionButton icon="book-outline" label="Address book" />
+        <ActionButton icon="information-circle-outline" label="About us" />
         <ActionButton
           icon="log-out-outline"
-          lable="Logout"
+          label="Logout"
           onPress={() => {
             clearCart();
             logout();

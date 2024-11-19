@@ -28,9 +28,9 @@ function getStatusColor(status: string) {
       return '#28a745';
     case 'confirmed':
       return '#007bff';
-    case 'available':
+    case 'delivered':
       return '#17a2b8';
-    case 'available':
+    case 'cancelled':
       return '#dc3545';
     default:
       return '#6c757d';
@@ -57,7 +57,7 @@ const OrderItem: FC<{item: Order; index: number}> = ({item, index}) => {
         {item.items.slice(0.2).map((i, idx) => {
           return (
             <CustomText variant="h8" numberOfLines={1} key={idx}>
-              {i.count}x {i.item.name}
+              {i.count}x{i.item.name}
             </CustomText>
           );
         })}

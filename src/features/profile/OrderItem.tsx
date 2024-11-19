@@ -38,7 +38,7 @@ const OrderItem: FC<{item: Order; index: number}> = ({item, index}) => {
           {item?.items?.map((i, idx) => {
             return (
               <CustomText variant="h8" numberOfLines={1} key={idx}>
-                {/* {i.count}x {i.item.name} */}
+                {i.count}x{i.item.name}
               </CustomText>
             );
           })}

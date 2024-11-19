@@ -7,18 +7,18 @@ import CustomText from '@components/ui/CustomText';
 
 interface ActionButtonProps {
   icon: string;
-  lable: string;
+  label: string;
   onPress?: () => void;
 }
 
-const ActionButton: FC<ActionButtonProps> = ({icon, lable, onPress}) => {
+const ActionButton: FC<ActionButtonProps> = ({icon, label, onPress}) => {
   return (
     <TouchableOpacity style={styles.btn} onPress={onPress}>
       <View style={styles.iconContainer}>
         <Icon name={icon} color={Colors.text} size={RFValue(14)} />
       </View>
       <CustomText variant="h7" fontFamily={Fonts.Medium}>
-        {lable}
+        {label}
       </CustomText>
     </TouchableOpacity>
   );
