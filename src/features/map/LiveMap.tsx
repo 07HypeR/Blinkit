@@ -1,10 +1,23 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
-import {ZoomIn} from 'react-native-reanimated';
+import React, {FC} from 'react';
 import {screenHeight} from '@utils/Scailing';
 import {Colors} from '@utils/Constants';
 
-const LiveMap = () => {
+interface LiveMapProps {
+  deliveryPersonLocation: any;
+  pickupLocation: any;
+  deliveryLocation: any;
+  hasPickedUp: any;
+  hasAccepted: any;
+}
+
+const LiveMap: FC<LiveMapProps> = ({
+  deliveryLocation,
+  deliveryPersonLocation,
+  pickupLocation,
+  hasAccepted,
+  hasPickedUp,
+}) => {
   return (
     <View style={styles.container}>
       <Text>LiveMap</Text>
