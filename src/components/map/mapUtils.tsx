@@ -1,10 +1,10 @@
 export const handleFitToPath = (
   mapRef: any,
-  deliveryPersonLocation: any,
-  pickupLocation: any,
   deliveryLocation: any,
+  pickupLocation: any,
   hasPickedUp: any,
   hasAccepted: any,
+  deliveryPersonLocation: any,
 ) => {
   if (mapRef && deliveryLocation && pickupLocation) {
     mapRef.fitToCoordinates(

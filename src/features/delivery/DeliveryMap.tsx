@@ -138,7 +138,18 @@ const DeliveryMap: FC = () => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}>
-        <LiveMap />
+        <LiveMap
+          deliveryPersonLocation={
+            orderData?.deliveryPersonLocation || myLocation
+          }
+          deliveryLocation={orderData?.deliveryLocation || null}
+          hasAccepted={
+            orderData?.deliveryPartner?._id == user?._id &&
+            orderData?.status == 'confirmed'
+          }
+          hasPickedUp={orderData?.status == 'arriving'}
+          pickupLocation={orderData?.pickupLocation || null}
+        />
 
         <DeliveryDetails details={orderData?.customer} />
         <OrderSummary order={orderData} />
