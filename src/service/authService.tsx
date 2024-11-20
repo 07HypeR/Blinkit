@@ -43,6 +43,15 @@ export const refetchUser = async (setUser: any) => {
     console.log('Login Error', error);
   }
 };
+export const updateUserLocation = async (data: any, setUser: any) => {
+  try {
+    const response = await appAxios.patch(`/user`, data);
+
+    refetchUser(setUser);
+  } catch (error) {
+    console.log('updateUserLocation Error', error);
+  }
+};
 
 export const refresh_tokens = async () => {
   try {

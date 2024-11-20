@@ -7,7 +7,7 @@ import {
   RefreshControl,
   ActivityIndicator,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {Colors} from '@utils/Constants';
 import DeliveryHeader from '@components/delivery/DeliveryHeader';
 import {useAuthStore} from '@state/authStore';
@@ -15,15 +15,35 @@ import TabBar from '@components/delivery/TabBar';
 import {fetchOrders} from '@service/orderService';
 import CustomText from '@components/ui/CustomText';
 import OrderItem from '@components/delivery/OrderItem';
+import Geolocation from '@react-native-community/geolocation';
+import {reverseGeocode} from '@service/mapService';
 
-const DeliveryDashboard = () => {
-  const {user} = useAuthStore();
+const DeliveryDashboard: FC = () => {
+  const {user, setUser} = useAuthStore();
   const [selectedTab, setSelectedTab] = useState<'available' | 'delivered'>(
     'available',
   );
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any[]>([]);
   const [refreshing, setRefreshing] = useState(false);
+
+  const updateUser = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        const {latitude, longitude} = position.coords;
+        reverseGeocode(latitude, longitude, setUser);
+      },
+      err => console.log(err),
+      {
+        enableHighAccuracy: false,
+        timeout: 15000,
+      },
+    );
+  };
+
+  useEffect(() => {
+    updateUser();
+  }, []);
 
   const renderOrderItem = ({item, index}: any) => {
     return <OrderItem index={index} item={item} />;

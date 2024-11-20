@@ -24,6 +24,8 @@
     "react-native": "0.76.0",
     "react-native-gesture-handler": "^2.20.2",
     "react-native-linear-gradient": "^2.8.3",
+    "react-native-maps": "^1.20.0",
+    "react-native-maps-directions": "^1.9.0",
     "react-native-mmkv": "^3.1.0",
     "react-native-pager-view": "^6.4.1",
     "react-native-reanimated": "^3.16.1",
