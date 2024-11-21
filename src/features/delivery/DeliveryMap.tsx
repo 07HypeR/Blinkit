@@ -69,7 +69,7 @@ const DeliveryMap: FC = () => {
     );
     if (data) {
       setCurrentOrder(data);
-      Alert.alert('Order Picked Up, Complete your order');
+      Alert.alert("Let's deliver it as soon as possible");
     } else {
       Alert.alert('There was an error');
     }
@@ -83,7 +83,7 @@ const DeliveryMap: FC = () => {
     );
     if (data) {
       setCurrentOrder(data);
-      Alert.alert('Wohoo! Order Delivered , See Your Milestone');
+      Alert.alert('Woohoo! You made it🥳');
     } else {
       Alert.alert('There was an error');
     }
@@ -128,6 +128,7 @@ const DeliveryMap: FC = () => {
         fetchOrderDetails();
       }
     }
+    sendLiveUpdates();
   }, [myLocation]);
   return (
     <SafeAreaView style={styles.container}>
