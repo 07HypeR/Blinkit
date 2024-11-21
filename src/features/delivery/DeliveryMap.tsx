@@ -18,6 +18,7 @@ import DeliveryDetails from '@features/map/DeliveryDetails';
 import OrderSummary from '@features/map/OrderSummary';
 import {hocStyles} from '@styles/GlobalStyles';
 import CustomButton from '@components/ui/CustomButton';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const DeliveryMap: FC = () => {
   const user = useAuthStore(state => state.user);
@@ -129,58 +130,60 @@ const DeliveryMap: FC = () => {
     }
   }, [myLocation]);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <LiveHeader
         type="Delivery"
         title={message}
         secondTitle="Delivery in 10 minutes"
       />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}>
-        <LiveMap
-          deliveryPersonLocation={
-            orderData?.deliveryPersonLocation || myLocation
-          }
-          deliveryLocation={orderData?.deliveryLocation || null}
-          hasAccepted={
-            orderData?.deliveryPartner?._id == user?._id &&
-            orderData?.status == 'confirmed'
-          }
-          hasPickedUp={orderData?.status == 'arriving'}
-          pickupLocation={orderData?.pickupLocation || null}
-        />
+      <View>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}>
+          <LiveMap
+            deliveryPersonLocation={
+              orderData?.deliveryPersonLocation || myLocation
+            }
+            deliveryLocation={orderData?.deliveryLocation || null}
+            hasAccepted={
+              orderData?.deliveryPartner?._id == user?._id &&
+              orderData?.status == 'confirmed'
+            }
+            hasPickedUp={orderData?.status == 'arriving'}
+            pickupLocation={orderData?.pickupLocation || null}
+          />
 
-        <DeliveryDetails details={orderData?.customer} />
-        <OrderSummary order={orderData} />
+          <DeliveryDetails details={orderData?.customer} />
+          <OrderSummary order={orderData} />
 
-        <View style={styles.flexRow}>
-          <View style={styles.iconContainer}>
-            <Icon
-              name="cards-heart-outline"
-              color={Colors.disabled}
-              size={RFValue(20)}
-            />
+          <View style={styles.flexRow}>
+            <View style={styles.iconContainer}>
+              <Icon
+                name="cards-heart-outline"
+                color={Colors.disabled}
+                size={RFValue(20)}
+              />
+            </View>
+
+            <View style={{width: '82%'}}>
+              <CustomText variant="h7" fontFamily={Fonts.SemiBold}>
+                Do you like our app clone?
+              </CustomText>
+              <CustomText variant="h9" fontFamily={Fonts.Medium}>
+                Hit star button on github repo! If you are enjoying comment your
+                excietment
+              </CustomText>
+            </View>
           </View>
 
-          <View style={{width: '82%'}}>
-            <CustomText variant="h7" fontFamily={Fonts.SemiBold}>
-              Do you like our app clone?
-            </CustomText>
-            <CustomText variant="h9" fontFamily={Fonts.Medium}>
-              Hit star button on github repo! If you are enjoying comment your
-              excietment
-            </CustomText>
-          </View>
-        </View>
-
-        <CustomText
-          fontFamily={Fonts.SemiBold}
-          variant="h6"
-          style={{opacity: 0.6, marginTop: 20}}>
-          Abhik Baidya x Blinkit
-        </CustomText>
-      </ScrollView>
+          <CustomText
+            fontFamily={Fonts.SemiBold}
+            variant="h6"
+            style={{opacity: 0.6, marginTop: 20}}>
+            Abhik Baidya x Blinkit
+          </CustomText>
+        </ScrollView>
+      </View>
 
       {orderData?.status != 'delivered' && orderData?.status != 'cancelled' && (
         <View style={[hocStyles.cartContainer, styles.btnContainer]}>
@@ -212,7 +215,7 @@ const DeliveryMap: FC = () => {
             )}
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 

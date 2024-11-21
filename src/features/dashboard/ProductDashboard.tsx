@@ -2,7 +2,6 @@ import {
   View,
   Text,
   Animated as RNAnimated,
-  SafeAreaView,
   StyleSheet,
   TouchableOpacity,
   Platform,
@@ -28,8 +27,9 @@ import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
 import withCart from '@features/cart/WithCart';
 import withLiveStatus from '@features/map/withLiveStatus';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-const NOTICE_HEIGHT = -(NoticeHeight + 12);
+const NOTICE_HEIGHT = -(NoticeHeight + 13);
 
 const ProductDashboard: FC = () => {
   const {scrollY, expand} = useCollapsibleContext();
@@ -79,7 +79,6 @@ const ProductDashboard: FC = () => {
       <>
         <Visuals />
         <SafeAreaView />
-
         <Animated.View style={[styles.backToTopButton, backToTopStyle]}>
           <TouchableOpacity
             onPress={() => {

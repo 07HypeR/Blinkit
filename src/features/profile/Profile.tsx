@@ -11,6 +11,7 @@ import ActionButton from './ActionButton';
 import OrderItem from './OrderItem';
 import {storage, tokenStorage} from '@state/storage';
 import {resetAndNavigate} from '@utils/NavigationUtils';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Profile: FC = () => {
   const [orders, setOrders] = useState([]);
@@ -68,7 +69,7 @@ const Profile: FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <CustomHeader title="Profile" />
 
       <FlatList
@@ -78,7 +79,7 @@ const Profile: FC = () => {
         keyExtractor={(item: any) => item?.orderId}
         contentContainerStyle={styles.scrollViewContent}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

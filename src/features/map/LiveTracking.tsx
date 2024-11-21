@@ -11,6 +11,7 @@ import CustomText from '@components/ui/CustomText';
 import DeliveryDetails from './DeliveryDetails';
 import OrderSummary from './OrderSummary';
 import withLiveStatus from './withLiveStatus';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const LiveTracking: FC = () => {
   const {currentOrder, setCurrentOrder} = useAuthStore();
@@ -38,77 +39,79 @@ const LiveTracking: FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <LiveHeader type="Customer" title={msg} secondTitle={time} />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}>
-        <LiveMap />
+      <View>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}>
+          {/* <LiveMap /> */}
 
-        <View style={styles.flexRow}>
-          <View style={styles.iconContainer}>
-            <Icon
-              name={currentOrder?.deliveryPartner ? 'phone' : 'shopping'}
-              color={Colors.disabled}
-              size={RFValue(20)}
-            />
-          </View>
-          <View style={{width: '82%'}}>
-            (
-            <CustomText
-              numberOfLines={1}
-              variant="h7"
-              fontFamily={Fonts.SemiBold}>
-              {currentOrder?.deliveryPartner?.name ||
-                'We will soon assign delivery partner'}
-            </CustomText>
-            )
-            {currentOrder?.deliveryPartner && (
-              <CustomText variant="h7" fontFamily={Fonts.Medium}>
-                {currentOrder?.deliveryPartner?.phone}
+          <View style={styles.flexRow}>
+            <View style={styles.iconContainer}>
+              <Icon
+                name={currentOrder?.deliveryPartner ? 'phone' : 'shopping'}
+                color={Colors.disabled}
+                size={RFValue(20)}
+              />
+            </View>
+            <View style={{width: '82%'}}>
+              (
+              <CustomText
+                numberOfLines={1}
+                variant="h7"
+                fontFamily={Fonts.SemiBold}>
+                {currentOrder?.deliveryPartner?.name ||
+                  'We will soon assign delivery partner'}
               </CustomText>
-            )}
-            (
-            <CustomText variant="h9" fontFamily={Fonts.Medium}>
-              {currentOrder?.deliveryPartner
-                ? 'For Delivery instructions you can contact here'
-                : msg}
-            </CustomText>
-            )
-          </View>
-        </View>
-
-        <DeliveryDetails details={currentOrder?.customer} />
-        <OrderSummary order={currentOrder} />
-
-        <View style={styles.flexRow}>
-          <View style={styles.iconContainer}>
-            <Icon
-              name="cards-heart-outline"
-              color={Colors.disabled}
-              size={RFValue(20)}
-            />
+              )
+              {currentOrder?.deliveryPartner && (
+                <CustomText variant="h7" fontFamily={Fonts.Medium}>
+                  {currentOrder?.deliveryPartner?.phone}
+                </CustomText>
+              )}
+              (
+              <CustomText variant="h9" fontFamily={Fonts.Medium}>
+                {currentOrder?.deliveryPartner
+                  ? 'For Delivery instructions you can contact here'
+                  : msg}
+              </CustomText>
+              )
+            </View>
           </View>
 
-          <View style={{width: '82%'}}>
-            <CustomText variant="h7" fontFamily={Fonts.SemiBold}>
-              Do you like our app clone?
-            </CustomText>
-            <CustomText variant="h9" fontFamily={Fonts.Medium}>
-              Hit star button on github repo! If you are enjoying comment your
-              excietment
-            </CustomText>
-          </View>
-        </View>
+          <DeliveryDetails details={currentOrder?.customer} />
+          <OrderSummary order={currentOrder} />
 
-        <CustomText
-          fontFamily={Fonts.SemiBold}
-          variant="h6"
-          style={{opacity: 0.6, marginTop: 20}}>
-          Abhik Baidya x Blinkit
-        </CustomText>
-      </ScrollView>
-    </View>
+          <View style={styles.flexRow}>
+            <View style={styles.iconContainer}>
+              <Icon
+                name="cards-heart-outline"
+                color={Colors.disabled}
+                size={RFValue(20)}
+              />
+            </View>
+
+            <View style={{width: '82%'}}>
+              <CustomText variant="h7" fontFamily={Fonts.SemiBold}>
+                Do you like our app clone?
+              </CustomText>
+              <CustomText variant="h9" fontFamily={Fonts.Medium}>
+                Hit star button on github repo! If you are enjoying comment your
+                excietment
+              </CustomText>
+            </View>
+          </View>
+
+          <CustomText
+            fontFamily={Fonts.SemiBold}
+            variant="h6"
+            style={{opacity: 0.6, marginTop: 20}}>
+            Abhik Baidya x Blinkit
+          </CustomText>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 };
 

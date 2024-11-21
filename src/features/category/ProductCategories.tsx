@@ -9,6 +9,7 @@ import {
 } from '@service/productService';
 import ProductList from './ProductList';
 import withCart from '@features/cart/WithCart';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const ProductCategories: FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -53,7 +54,7 @@ const ProductCategories: FC = () => {
   }, [selectedCategory]);
 
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
       <CustomHeader title={selectedCategory?.name || 'Categories'} search />
       <View style={styles.subContainer}>
         {categoriesLoading ? (
@@ -75,7 +76,7 @@ const ProductCategories: FC = () => {
           <ProductList data={products || []} />
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

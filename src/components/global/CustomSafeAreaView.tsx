@@ -1,5 +1,6 @@
-import {View, Text, ViewStyle, SafeAreaView, StyleSheet} from 'react-native';
+import {View, Text, ViewStyle, StyleSheet} from 'react-native';
 import React, {FC, ReactNode} from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 interface CustomeSafeAreaViewProps {
   children: ReactNode;

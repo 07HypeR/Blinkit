@@ -2,7 +2,6 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   FlatList,
   RefreshControl,
   ActivityIndicator,
@@ -17,6 +16,7 @@ import CustomText from '@components/ui/CustomText';
 import OrderItem from '@components/delivery/OrderItem';
 import Geolocation from '@react-native-community/geolocation';
 import {reverseGeocode} from '@service/mapService';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const DeliveryDashboard: FC = () => {
   const {user, setUser} = useAuthStore();
@@ -64,10 +64,10 @@ const DeliveryDashboard: FC = () => {
   }, [selectedTab]);
 
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      <View>
         <DeliveryHeader name={user?.name} email={user?.email} />
-      </SafeAreaView>
+      </View>
       <View style={styles.subContainer}>
         <TabBar selectedTab={selectedTab} onTabChange={setSelectedTab} />
         <FlatList
@@ -97,7 +97,7 @@ const DeliveryDashboard: FC = () => {
           contentContainerStyle={styles.flatlistContainer}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

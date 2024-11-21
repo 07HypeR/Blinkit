@@ -22,6 +22,7 @@ import {useAuthStore} from '@state/authStore';
 import ArrowButton from '@components/ui/ArrowButton';
 import {navigate} from '@utils/NavigationUtils';
 import {createOrder} from '@service/orderService';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const ProductOrder: FC = () => {
   const {getTotalPrice, cart, clearCart} = useCartStore();
@@ -59,7 +60,7 @@ const ProductOrder: FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <CustomHeader title="Checkout" />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <OrderList />
@@ -152,7 +153,7 @@ const ProductOrder: FC = () => {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
