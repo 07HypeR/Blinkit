@@ -45,7 +45,7 @@ const DeliveryMap: FC = () => {
         setMyLocation({latitude, longitude});
       },
       err => console.log('Error Fetching Geolocation', err),
-      {enableHighAccuracy: true, distanceFilter: 2},
+      {enableHighAccuracy: true, distanceFilter: 10},
     );
 
     return () => Geolocation.clearWatch(watchId);
@@ -82,7 +82,7 @@ const DeliveryMap: FC = () => {
       'delivered',
     );
     if (data) {
-      setCurrentOrder(data);
+      setCurrentOrder(null);
       Alert.alert('Woohoo! You made it🥳');
     } else {
       Alert.alert('There was an error');

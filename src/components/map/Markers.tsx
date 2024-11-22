@@ -3,9 +3,9 @@ import React from 'react';
 import {Marker} from 'react-native-maps';
 
 const Markers = ({
+  deliveryPersonLocation,
   deliveryLocation,
   pickupLocation,
-  deliveryPersonLocation,
 }: any) => {
   return (
     <>

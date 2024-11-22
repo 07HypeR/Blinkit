@@ -17,6 +17,7 @@ import OrderItem from '@components/delivery/OrderItem';
 import Geolocation from '@react-native-community/geolocation';
 import {reverseGeocode} from '@service/mapService';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import withLiveOrder from './withLiveOrder';
 
 const DeliveryDashboard: FC = () => {
   const {user, setUser} = useAuthStore();
@@ -122,4 +123,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DeliveryDashboard;
+export default withLiveOrder(DeliveryDashboard);

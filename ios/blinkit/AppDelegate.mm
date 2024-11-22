@@ -8,7 +8,7 @@
 {
   self.moduleName = @"blinkit";
   // You can add your custom initial props in the dictionary below.
-  [GMSServices provideAPIKey:@"AIzaSyCPjFuHYQagM0Y9nx82QOeu6expc5iQN10"]
+  [GMSServices provideAPIKey:@"AIzaSyB-7-tnJAhvCAJKQjfNunN68DDFZO1RE4E"]
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 

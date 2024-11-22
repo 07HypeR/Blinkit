@@ -9,19 +9,18 @@ export const reverseGeocode = async (
 ) => {
   try {
     const response = await axios.get(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&=${GOOGLE_MAP_API}`,
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAP_API}`,
     );
 
     if (response.data.status == 'OK') {
       const address = response.data.results[0].formatted_address;
-      console.log(response.data);
 
       updateUserLocation(
         {liveLocation: {latitude, longitude}, address},
         setUser,
       );
     } else {
-      console.error('Geo Code Failed', response.data);
+      console.error('Geo Code Failed');
     }
   } catch (error) {
     console.error('Geo Code Failed');
