@@ -70,7 +70,6 @@ If you can't get this to work, see the [Troubleshooting](https://reactnative.dev
 
 # Learn-More
 
-# Blinkit
 
 To learn more about React Native, take a look at the following resources:
 
